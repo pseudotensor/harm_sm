@@ -1,0 +1,25 @@
+@node Contour, Ctype, Connect, Commands
+
+@iftex
+@syntax Contour.
+@end iftex
+@example
+Syntax: CONTOUR 
+@end example
+@pindex Contour
+@findex 2-dimensional graphics, contour
+
+Makes a contour plot of an image read by the IMAGE command
+(@pxref{Image}).
+The contour levels are set using LEVELS;
+plot coordinates are taken to be those set by the
+LIMITS command, and contours are drawn in the current LTYPE. It is not
+possible to produce labeled contours.
+
+Any pixels whose value is @code{NaN} are ignored, as are any whose value
+equals the SM variable @code{$missing_data}; by default this is some
+very large number.
+
+See also DITHER for dithering images, IMAGE CURSOR for using cursors to
+get values from images, MINMAX for finding the minimum and maximum of
+images, and Arithmetic for extracting cross-sections of images.

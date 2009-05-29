@@ -1,0 +1,30 @@
+@node Histogram, History, Help, Commands
+
+@iftex
+@syntax Histogram.
+@end iftex
+@example
+Syntax: HISTOGRAM WORD1 WORD2 [ IF (expr) ]
+@end example
+@pindex Histogram
+
+HISTOGRAM connects the points in vectors @code{WORD1} and @code{WORD2} as
+a histogram.
+The @code{i}th bin of the histogram is taken to run from
+@code{(x[i-1] + x[i])/2} to @code{(x[i] + x[i+1])/2};
+for the case of equally spaced x-values, this reduces
+to saying that the x values are the bin centres.
+
+If the IF clause is present, only use those points for which @code{expr} (see
+the section on vector arithmetic) is true (i.e. non-zero).
+
+In fact, either or both of the @code{WORD}s may be replaced by
+`parenthesised expressions', i.e. expressions in parentheses. For example,
+@example
+HISTOGRAM x (2 + y)
+@end example
+@noindent
+to plot x against @i{2 + @r{y}}.
+There is a macro @code{barhist} for drawing bar charts.
+See Arithmetic for how to convert vectors of data into histograms, and
+@code{SHADE} for how to shade them.

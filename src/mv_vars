@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# Move the Variables within the Auto Variables comment to
+# be auto variables in yyparse. This only matters for recursively
+# called parsers, and even then we often get away with it.
+#
+# Also make some variables far rather than static; this only happens
+# on DOS machines (see options.h), but this way unix control.[ch] are
+# valid under DOS. Slightly different patterns are required for different
+# versions of bison
+#
+mv control.c y.tab.c
+sed	-e '/\/\*Auto Variables\*\//,/\/\*End Auto Variables\*\//{
+		s/static *//
+		H
+		d
+	}' \
+	-e '/^yyparse()/{
+		N
+		p
+		x
+	}' \
+	-e 's/static const short/Static Const short Far/g' \
+	-e 's/static short/Static Const short Far/g' \
+	-e 's/static const char \* const/Static Const char Far * Const Far/g' \
+	-e 's/static char \*/Static Const char Far * Const Far /g' \
+	y.tab.c > control.c
+rm -f y.tab.c

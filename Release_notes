@@ -1,0 +1,252 @@
+File: notes,  Node: Release 2.4,  Next: Change 2.4,  Prev: Release 2.3,  Up: Top
+
+Changes from Version 2.3.0 to Version 2.4
+*****************************************
+
+*
+     (This one is actually a change for 2.3.0). You can no longer
+     choose your own prefix for SM graphics calls.(1)
+
+*
+     You can specify a pattern to restrict the output of the LIST
+     DEVICE command.
+
+*
+     You can say IMAGE CURSOR WORD WORD WORD to get intensities into a
+     vector.
+
+*
+     An argument of 4 to BOX stops that axis from being drawn.
+
+*
+     VERSION is now implemented as a macro, printing `$version'.
+
+*
+     The algorithm for choosing axis labels now checks that there is
+     enough room for the labels that is has chosen and acts accordingly.
+
+*
+     Searches are now by default case in-sensitive. You can still use
+     `$case-fold-search' to change this behaviour.
+
+*
+     You can specify `:tc=...:' or  `:TC=...:' as part of a DEVICE
+     command.
+
+*
+     You can set the maximum size of string-valued vector elements in
+     `options.h'.
+
+*
+     Removed restrictions on number of vectors in READ and PRINT
+     commands.
+
+*
+     Added atof to convert string-valued vectors to arithmetic.
+
+*
+     LIST DEFINE | will list internal variables (such as $fx1).
+
+*
+     You can use READ ! to continue reading past lines that don't match
+     what SM expects (either the wrong number or types of columns, or a
+     mismatch with the format)
+
+*
+     There is a new format %n that returns the number of fields
+     correctly matched in the line being READ.
+
+*
+     You can now specify the minimum and maximum number of arguments
+     that a macro expects (but see the change notes (*note Change
+     2.4::.) for a slight inconsistency). Note that you cannot declare
+     macros that expect zero -- n arguments with a `macro name nargs
+     {...}' command.
+
+*
+     Most of the behaviour that is influenced by values in your `.sm'
+     file will now look at a variable of the same name rather than the
+     `.sm' file directly (they are defined from `.sm' when SM is
+     started).
+
+*
+     There is now support for a wider range of fonts; the changes were
+     introduced to support Japanese. Details in the fonts appendix
+     (*note Fonts: (sm)Fonts.).
+
+*
+     Shading with a solid colour on hardware that supports area fills
+     is now done using the hardware support; this currently means X11
+     and postscript.
+
+*
+     The `-f' command line option can now be used to name the `.sm'
+     file instead of specifying a full path.
+
+*
+     Startup files can be called `.sm' or `sm.rc'; the latter is looked
+     for first on non-unix machines.
+
+*
+     You can now specify the slant and condensation of fonts with
+     `\slant' and `\condense'.
+
+*
+     Support for reading tables, in particular FITS binary tables.
+
+*
+     The WINDOW command can handle ranges of windows (e.g. WINDOW 1 4 1
+     2:3) (n.b. for a while this was written as WINDOW 1 4 1 2.3).
+
+*
+     You can now create vectors and variables with local (actually
+     nested) scope with the commands DEFINE var LOCAL and SET vec LOCAL.
+
+*
+     PRINT now supports the integer formats 'd', 'o', and 'x'.
+
+*
+     Added colour to the raster devices
+
+*
+     Added new devices to generate pbm, ppm, and gif files.
+
+*
+     Added a compile-time option to use `double's rather than `float's
+     for vectors.
+
+*
+     Understand hex integers (of the form 0x...).
+
+*
+     The X11 driver now puts up the current cursor position when in
+     cursor mode; this can be disabled with the -nocurswindow flag to
+     the DEVICE x11 command.
+
+*
+     SM now supports the syntax FOREACH `var name' { ... } to iterate
+     over each element of a vector `name'.
+
+*
+     You can access the help string associated with a vector `name' as
+     the string-valued expression HELP(name); useful in labels as
+     $(HELP(name)).
+
+*
+     (This isn't really new, but it's little known). The devices tpic
+     and gpic can be used to generate figures that TeX can pass to
+     dvips and xdvi.
+
+*
+     You can now use %o and %x formats in READ 'format' ... commands.
+
+*
+     You can now declare a macro `abort_handler' to trap USER ABORTs.
+
+*
+     Added command DITHER to do Floyd-Steinberg dithering of images.
+
+*
+     Added expressions DO(s_expr, s_expr) and  DO(s_expr, s_expr,
+     s_expr) to allow implicit DO loops within expressions.
+
+*
+     You can now extract values from images by index as well as by
+     coordinate; furthermore you can specify entire rows or columns
+     (e.g. set r=image[*,0] to read the entire first row of an image).
+
+*
+     You can refer to an entire image as image[*,*] (e.g. set
+     image[*,*] = 2*image[*,*]).
+
+*
+     Commands like "list device" now work even if device is overloaded.
+
+*
+     Added "list table" to list columns in (fits binary) tables
+
+*
+     When reading tables, you can now say "read table { name[0-4] }" to
+     read an array from the table into (in this case) 5 vectors.
+
+*
+     Added "while { expr } { commands }".
+
+*
+     Added break to escape from WHILE loops.
+
+*
+     Added modulus operator, %.
+
+*
+     Added bitwise operators, | and &.
+
+*
+     You can define the variable `print_noheader' to stop the PRINT
+     command printing the vectors' names.
+
+*
+     Expressions are now allowed among the arguments of macros used as
+     functions
+
+*
+     The default is now to save the read pointer (see READ).
+
+*
+     Added incomplete Gamma functions (useful for, e.g., chi^2
+     probabilities)
+
+*
+     SM is now able to open an arbitrary number of X11 devices
+     simultaneously (e.g. `dev x11 -dev 1').
+
+*
+     You can request a private colour map for X11 devices; allocating
+     (e.g.) 256 colours should work with this option.
+
+*
+     The connect function for callable SM is now `sm_connect' (`sm_conn'
+     is still supported for backwards compatibility).
+
+*
+     Added `sm_ctype_i' and `sm_set_ctypes' to manipulate colour maps
+     from callable SM.
+
+
+Inconsistent Changes from Version 2.3.0 to Version 2.4
+******************************************************
+
+*
+     The changes to macros with variable numbers of arguments means
+     that you'll have to declare macros with zero to one arguments as
+     having 01 arguments; the old form (11) means between one and one
+     arguments.
+
+*
+     Italic fonts are now *not* toggled off again by a second `\it' in
+     TeX mode; rather you must use explicit grouping with {}.
+
+*
+     In callable SM, `sm_window' now expects 6 arguments, not 4.
+
+*
+     The macro `is_set' now does what it says; it doesn't do an implicit
+     WHATIS. You probably want to use `is_macro' or `is_vector' rather
+     than `is_set'.
+
+*
+     The command "set image(expr,expr) = expr" is now deprecated;
+     please say "set image[expr,expr] = expr".
+
+*
+     The command to use ranges of windows is of the form "WINDOW 1 4 1
+     2:3", but for a while it was "WINDOW 1 4 1 2.3" (it was changed as
+     "WINDOW 1 12 1 8.10" is indistinguishable from "WINDOW 1 12 1
+     8.1").
+
+*
+     For devices with strange aspect ratios, points are now expanded to
+     preserve shape rather than compressed (this is now consistent with
+     the behaviour of characters). Axis ticks are also suitable scaled.
+
+

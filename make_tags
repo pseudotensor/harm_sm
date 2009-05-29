@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Make an emacs-style TAGS file for a set of SM macros
+# Usage: make_tags file [ file ... ]
+#
+if [ X"$1" = X"" ]; then
+	echo You must specify at least one filename
+	exit 1
+fi
+touch tags.$$ && trap "rm tags.$$" 0 2
+for f do
+	awk '/^[^ \t]/ {printf "%s %d,0\n",$1,NR}' $f > tags.$$
+	echo 
+	echo $f,`wc -c tags.$$ | awk '{print $1}'`
+	cat tags.$$
+done > TAGS
+

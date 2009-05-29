@@ -1,0 +1,36 @@
+Syntax: IMAGE file
+or      IMAGE file xmin xmax ymin ymax
+or      IMAGE ( nx, ny )
+or      IMAGE ( nx, ny ) xmin xmax ymin ymax
+or      IMAGE CURSOR
+or      IMAGE CURSOR WORD1 WORD2 WORD3
+or      IMAGE DELETE
+
+   Read an image from file "file", optionally specifying the range of
+coordinates covered by the data values. If you do not specify them
+they will be taken to be "0 nx-1 0 ny-1" where nx and ny are the
+dimensions of the image. If you use (nx,ny) instead of a filename an
+empty image of those dimensions is created; it may be filled by saying
+SET image(x,y) = values.
+
+   IMAGE CURSOR is identical to CURSOR (q.v.), except that it also
+gives the value of the image at the cursor; IMAGE CURSOR WORD WORD WORD
+is equivalent to CURSOR WORD WORD, but it also generates a vector of
+image intensities.
+
+   IMAGE DELETE will forget the current image and levels.
+
+   The format of the data file is specified by a `filecap' file, which
+must be defined in your .sm file. The IMAGE command looks in this
+file for the value of the variable `file_type'. See the manual for
+details. Common values are `C' (for C files), `unix' (For fortran
+unformatted files under unix) and `vms_var' or `vms_fixed' for
+unformatted fortran files under VMS. In all of these cases, the file
+begins with two integers giving the dimension of the array, followed
+by the data. For Fortran under VMS, you MUST use a recl=512 (i.e.
+2048by) (file_type vms_var), or specify `format=fixed' in your open
+statement and some record length (file_type vms_fixed), or change the
+filecap file. See the manual for examples.
+
+   See also ARITHMETIC for extracting cross-sections of an image, and DEFINE
+for defining variables from an image header.

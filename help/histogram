@@ -1,0 +1,11 @@
+Syntax: HISTOGRAM pexpr1 pexpr2 [ IF (expr) ]
+
+   (`Pexpr' is the name of a vector, or an expression in parentheses,
+e.g. HISTOGRAM (ln(x)) z )
+
+   HISTOGRAM connects the points in vectors pexpr1 and pexpr2 as a
+histogram. The ith bin of the histogram is taken to run from (x[i-1]+x[i])/2
+to (x[i] + x[i+1])/2. If the IF clause is present, only use those points for
+which expr (see ARITHMETIC) is non-zero.
+
+   See ARITHMETIC for calculating a histogram of values from a vector.

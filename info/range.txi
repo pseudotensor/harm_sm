@@ -1,0 +1,19 @@
+@node Range, Read, Quit, Commands
+
+@iftex
+@syntax Range.
+@end iftex
+@example
+@pindex Range
+
+Syntax: RANGE number_x number_y
+@end example
+
+If number is non-zero, set the range on the x or y axis to be number,
+so LIMITS will choose two values that differ by number. Nothing will
+happen until you issue a LIMITS command.
+
+For instance, if you wanted to ensure that the y axis of a logarithmic plot
+spans exactly two decades the commands RANGE @code{0 2} LIMITS @code{x y } would
+choose suitable y limits, with actual values appropriate for the @code{y}
+vector (in fact symmetrical about the median value).

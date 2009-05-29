@@ -1,0 +1,8 @@
+Syntax: IF (expr) { list1 } <CR>
+or      IF (expr) { list1 } ELSE { list2 }
+
+   If `expr' is true, execute list1, otherwise list2 (if present).
+Note the compulsory carriage return if the ELSE is omitted
+
+   See also SET, CONNECT, HISTOGRAM, and POINTS for conditional
+assignment and plotting, and the ?: operator under arithmetic.

@@ -1,0 +1,9 @@
+sm
+tutorial
+html
+sm-[0-9] sm-[0-9][0-9]
+FAQ
+install
+notes
+FAQ.html notes.html sm.html tutorial.html
+texput.log

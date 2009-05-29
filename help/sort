@@ -1,0 +1,6 @@
+Syntax: SORT { vector_list }
+or      SORT < vector_list >
+
+   Sort the first vector in the list into increasing numerical order,
+and rearrange the others in the same way. The maximum number of
+vectors that can be sorted is 10.

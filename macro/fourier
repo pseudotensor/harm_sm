@@ -1,0 +1,41 @@
+## -*-SM-*- Set SM-mode in emacs
+#
+# Macros to make dealing with complex numbers for FFT's easier
+# Assumes that complex vector `name' is represented by two vectors
+# called name_r and name_i
+#
+fft	2	# Direct FFT: fft name name
+		# Needs overloading to work: OVERLOAD FFT 1
+		FFT 1 $1_r $1_i $2_r $2_i
+ifft	2	# Inverse FFT: ifft name name
+		FFT -1 $1_r $1_i $2_r $2_i
+cadd    3       # Add complex numbers: $1 = $2 + $3
+		SET $1_r = $2_r + $3_r
+		SET $1_i = $2_i + $3_i
+cdiv    3       # Divide complex numbers: $1 = $2/$3
+		SET _$0 = $3_r**2 + $3_i**2
+		SET $1_r = ($2_r*$3_r + $2_i*$3_i)/_$0
+		SET $1_i = ($2_i*$3_r - $2_r*$3_i)/_$0
+		DELETE _$0
+cmod	2	# Modulus: $1 = |$2|
+		SET $1 = SQRT($2_r**2 + $2_i**2)
+cmult	3	# Multiply complex numbers: $1 = $2*$3
+		SET $1_r = $2_r*$3_r - $2_i*$3_i
+		SET $1_i = $2_i*$3_r + $2_r*$3_i
+csub    3       # Subtract complex numbers: $1 = $2 - $3
+		SET $1_r = $2_r - $3_r
+		SET $1_i = $2_i - $3_i
+imag    2       # Imaginary part: $1 = Im($2)
+		SET $1 = $2_i
+real    2       # Real part: $1 = Re($2)
+		SET $1 = $2_r
+vcenter		## an alias for vcentre
+vcentre	1	# shift a vector so that its 0th element appears in the middle;
+		# this is nice for looking at power spectra: e.g.
+		#  fft 1 y fy   cmod p fy   set p=p*p
+		#  lim x p box con x (vcentre(p))
+		set _i=0,dimen($1)-1
+		set _$1=$1 if(_i < dimen($1)/2)
+		set __$1=$1 if(_i >= dimen($1)/2)
+		set $0=__$1 concat _$1
+		DELETE _i DELETE _$1 DELETE __$1
