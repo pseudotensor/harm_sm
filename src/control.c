@@ -1199,14 +1199,14 @@ int yydebug = 0;		/*  nonzero means print parse trace	*/
 /*  YYMAXDEPTH indicates the initial size of the parser's stacks	*/
 
 #ifndef	YYMAXDEPTH
-#define YYMAXDEPTH 1000
+#define YYMAXDEPTH 10000
 #endif
 
 /*  YYMAXLIMIT is the maximum size the stacks can grow to
     (effective only if the built-in stack extension method is used).  */
 
 #ifndef YYMAXLIMIT
-#define YYMAXLIMIT 50000
+#define YYMAXLIMIT 500000
 #endif
 
 
@@ -1266,6 +1266,7 @@ yyparse()
      Waste one element of value and location stack
      so that they stay on the same level as the state stack.  */
 
+  // JCM: Below line causes segfault sometimes.  Increased stack to see if avoided.  Otherwise, should turn off optimizations to see what is going on.
   yyssp = yyss - 1;
   yyvsp = yyvs;
   yylsp = yyls;
