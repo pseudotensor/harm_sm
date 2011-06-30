@@ -40,4 +40,5 @@ config 02	# Print config info
 		write $p "$!2" "jon @ 131.142.156.105 relativity.cfa.harvard.edu relativity"
 		write $p "$!2" "root @ 134.79.236.233 ki-rh39.slac.stanford.edu ki-rh39"
 		write $p "$!2" "root @ 134.79.236.242 ki-rh42.slac.stanford.edu ki-rh42"
+		write $p "$!2" "jon @ 134.79.236.242 ki-rh42.slac.stanford.edu ki-rh42"
 		#

@@ -29,7 +29,7 @@
 #include "sm_declare.h"
 #define NTOKEN 10000		/* maximum number of tokens */
 #define POUT fprintf(outfil	/* save space */
-#define SIZE 2000			/* maximum size of token */
+#define SIZE 2600			/* maximum size of token */
 
 static void sort();
 static struct token_st {

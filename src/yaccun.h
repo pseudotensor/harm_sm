@@ -3,7 +3,7 @@
 /*
  * these are the typedefs for the yacc union 
  */
-#define CHARMAX 2000			/* maximum size of word */
+#define CHARMAX 2600			/* maximum size of word */
 
 typedef struct {			/* a pair of floats + 1 */
    float a,b,

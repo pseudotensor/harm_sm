@@ -1199,14 +1199,14 @@ int yydebug = 0;		/*  nonzero means print parse trace	*/
 /*  YYMAXDEPTH indicates the initial size of the parser's stacks	*/
 
 #ifndef	YYMAXDEPTH
-#define YYMAXDEPTH 10000
+#define YYMAXDEPTH 1000
 #endif
 
 /*  YYMAXLIMIT is the maximum size the stacks can grow to
     (effective only if the built-in stack extension method is used).  */
 
 #ifndef YYMAXLIMIT
-#define YYMAXLIMIT 500000
+#define YYMAXLIMIT 10000
 #endif
 
 
@@ -1220,10 +1220,11 @@ yyparse()
 	       word[CHARMAX];		/* buffer for storing WORD */
    char variable_name[CHARMAX];		/* name of variable being defined */
 /*End Auto Variables*/
-  register int yystate;
-  register int yyn;
-  register short *yyssp;
-  register YYSTYPE *yyvsp;
+// JCM: below 4 were register types
+   int yystate;
+   int yyn;
+   short *yyssp;
+   YYSTYPE *yyvsp;
   YYLTYPE *yylsp;
   int yyerrstatus;	/*  number of tokens to shift before error messages enabled */
   int yychar1;		/*  lookahead token as an internal (translated) token number */
@@ -1255,6 +1256,8 @@ yyparse()
 
   int yylen;
 
+  //  yydebug=1;
+
   if (yydebug)
     fprintf(stderr, "Starting parse\n");
 
@@ -1267,6 +1270,7 @@ yyparse()
      so that they stay on the same level as the state stack.  */
 
   // JCM: Below line causes segfault sometimes.  Increased stack to see if avoided.  Otherwise, should turn off optimizations to see what is going on.
+  // JCM: Making stack too big caused instant run crash on this line. Unsure what's goin gon.
   yyssp = yyss - 1;
   yyvsp = yyvs;
   yylsp = yyls;
@@ -1274,7 +1278,7 @@ yyparse()
 /* Push a new state, which is found in  yystate  .  */
 /* In all cases, when you get here, the value and location stacks
    have just been pushed. so pushing a state here evens the stacks.  */
-yynewstate:
+ yynewstate:
 
   *++yyssp = yystate;
 
@@ -1426,6 +1430,7 @@ yyreduce:
 
   if (yydebug)
     {
+      fprintf(stderr,"yyn=%d\n",yyn);
       if (yylen == 1)
 	fprintf (stderr, "Reducing 1 value via line %d, ",
 		 yyrline[yyn]);

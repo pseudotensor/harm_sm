@@ -15,7 +15,7 @@
 #include "control.h"		/* definitions of DOUBLE and INTEGER */
 #include "sm_declare.h"
 
-#define SIZE 2000		/* official size of line buffer */
+#define SIZE 2600		/* official size of line buffer */
 
 static char c_line[SIZE+CHARMAX] = "",
 				/* current line (with room for another token)*/

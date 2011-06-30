@@ -109,8 +109,9 @@ int to_eol;				/* read to the eol? */
    (void)unput(*aptr);
 
    if(aptr == arg + size) {
-      msg_1s("Insufficient room in read_string() for string:\n\t\"%s\"\n",arg);
-      aptr--;
+     msg_1s("Insufficient room in read_string() for string:\n\t\"%s\"\n",arg);
+     msg_1s("maxsize=%d\n",size);
+     aptr--;
    }
    *aptr = '\0';
 

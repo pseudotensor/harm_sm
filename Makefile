@@ -29,6 +29,7 @@
 # programme, as gcc doesn't understand exit().
 #
 CC = gcc -O3 -Wall -Dlinux -L/usr/X11R6/lib64 -L/usr/X11R6/lib64
+#CC = gcc -O0 -g -Wall -Dlinux -L/usr/X11R6/lib64 -L/usr/X11R6/lib64
 #
 # cc flags
 #
@@ -41,7 +42,7 @@ CFLAGS = -g -I/home/jon/research/utils/sm/sm2_4_1/src
 #	DESTMAN: manual page(s)
 #	DESTLISP: emacs lisp files
 #
-DEST = /usr/local
+DEST = /usr2/local/
 DESTDIR = $(DEST)/bin
 DESTLIB = $(DEST)/lib
 DESTETC = $(DEST)/lib/sm
