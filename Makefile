@@ -42,7 +42,7 @@ CFLAGS = -g -I/home/jon/research/utils/sm/sm2_4_1/src
 #	DESTMAN: manual page(s)
 #	DESTLISP: emacs lisp files
 #
-DEST = /usr2/local/
+DEST = /home/jon/
 DESTDIR = $(DEST)/bin
 DESTLIB = $(DEST)/lib
 DESTETC = $(DEST)/lib/sm

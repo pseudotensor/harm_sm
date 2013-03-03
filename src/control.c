@@ -116,7 +116,7 @@
 #define	SUBSTR	370
 #define	UNARY	371
 
-/* #line 1 "control.y" */
+#line 1 "control.y"
 
 #  include "copyright.h"
 #  include "options.h"
@@ -1115,7 +1115,7 @@ Static Const short Far yycheck[] = {     9,
 };
 #define YYIMPURE 1
 
-/* #line 2 "bison.simple" */
+#line 2 "bison.simple"
 
 /* Skeleton output parser for bison,
    copyright (C) 1984 Bob Corbett and Richard Stallman
@@ -1199,7 +1199,7 @@ int yydebug = 0;		/*  nonzero means print parse trace	*/
 /*  YYMAXDEPTH indicates the initial size of the parser's stacks	*/
 
 #ifndef	YYMAXDEPTH
-#define YYMAXDEPTH 1000
+#define YYMAXDEPTH 200
 #endif
 
 /*  YYMAXLIMIT is the maximum size the stacks can grow to
@@ -1210,7 +1210,7 @@ int yydebug = 0;		/*  nonzero means print parse trace	*/
 #endif
 
 
-/* #line 87 "bison.simple" */
+#line 87 "bison.simple"
 int
 yyparse()
 {
@@ -1220,11 +1220,10 @@ yyparse()
 	       word[CHARMAX];		/* buffer for storing WORD */
    char variable_name[CHARMAX];		/* name of variable being defined */
 /*End Auto Variables*/
-// JCM: below 4 were register types
-   int yystate;
-   int yyn;
-   short *yyssp;
-   YYSTYPE *yyvsp;
+  register int yystate;
+  register int yyn;
+  register short *yyssp;
+  register YYSTYPE *yyvsp;
   YYLTYPE *yylsp;
   int yyerrstatus;	/*  number of tokens to shift before error messages enabled */
   int yychar1;		/*  lookahead token as an internal (translated) token number */
@@ -1256,8 +1255,6 @@ yyparse()
 
   int yylen;
 
-  //  yydebug=1;
-
   if (yydebug)
     fprintf(stderr, "Starting parse\n");
 
@@ -1269,8 +1266,6 @@ yyparse()
      Waste one element of value and location stack
      so that they stay on the same level as the state stack.  */
 
-  // JCM: Below line causes segfault sometimes.  Increased stack to see if avoided.  Otherwise, should turn off optimizations to see what is going on.
-  // JCM: Making stack too big caused instant run crash on this line. Unsure what's goin gon.
   yyssp = yyss - 1;
   yyvsp = yyvs;
   yylsp = yyls;
@@ -1278,7 +1273,7 @@ yyparse()
 /* Push a new state, which is found in  yystate  .  */
 /* In all cases, when you get here, the value and location stacks
    have just been pushed. so pushing a state here evens the stacks.  */
- yynewstate:
+yynewstate:
 
   *++yyssp = yystate;
 
@@ -1430,7 +1425,6 @@ yyreduce:
 
   if (yydebug)
     {
-      fprintf(stderr,"yyn=%d\n",yyn);
       if (yylen == 1)
 	fprintf (stderr, "Reducing 1 value via line %d, ",
 		 yyrline[yyn]);
@@ -1443,7 +1437,7 @@ yyreduce:
   switch (yyn) {
 
 case 1:
-/* #line 124 "control.y" */
+#line 124 "control.y"
 {
 #if defined(YYFAIL)
 #  undef  YYERROR			/* work around for Bison bug */
@@ -1453,7 +1447,7 @@ case 1:
 	 ;
     break;}
 case 3:
-/* #line 135 "control.y" */
+#line 135 "control.y"
 {
 	    fflush(stdout); fflush(stderr);
 	    if(buff_is_empty()) {	/* no characters on input buffer */
@@ -1467,7 +1461,7 @@ case 3:
 	 ;
     break;}
 case 4:
-/* #line 147 "control.y" */
+#line 147 "control.y"
 {
 	    char cmd[200];		/* command to execute */
 	    char *shell;		/* the shell to use */
@@ -1485,7 +1479,7 @@ case 4:
 	 ;
     break;}
 case 5:
-/* #line 163 "control.y" */
+#line 163 "control.y"
 {
 	    abort_plot = 1;
 	    if(graph_mode) { IDLE(); graph_mode = 0; }
@@ -1498,14 +1492,14 @@ case 5:
 	 ;
     break;}
 case 6:
-/* #line 174 "control.y" */
+#line 174 "control.y"
 {
 	    set_angle(yyvsp[0].vector.vec.f,yyvsp[0].vector.dimen);
 	    vec_free(&yyvsp[0].vector);
 	 ;
     break;}
 case 7:
-/* #line 179 "control.y" */
+#line 179 "control.y"
 {
 	    (void)mgets(buff,CHARMAX);	/* read rest of line */
 	    help_apropos(&buff[1]);
@@ -1513,11 +1507,11 @@ case 7:
 	 ;
     break;}
 case 8:
-/* #line 185 "control.y" */
+#line 185 "control.y"
 { set_aspect( yyvsp[0].floatval ); ;
     break;}
 case 9:
-/* #line 187 "control.y" */
+#line 187 "control.y"
 {
 	    if(yyvsp[0].charval[0] == '~') {
 	       if(getenv("HOME") == NULL) {
@@ -1544,7 +1538,7 @@ case 9:
 	 ;
     break;}
 case 10:
-/* #line 212 "control.y" */
+#line 212 "control.y"
 {
 	    sm_cursor(0);
 	    sm_disable();
@@ -1552,14 +1546,14 @@ case 10:
 	 ;
     break;}
 case 11:
-/* #line 218 "control.y" */
+#line 218 "control.y"
 {
 	    set_cursor_vectors(yyvsp[-1].charval,yyvsp[0].charval,(char *)NULL);
 	    sm_disable();
 	 ;
     break;}
 case 12:
-/* #line 223 "control.y" */
+#line 223 "control.y"
 {
 	    FILE *fil;
 
@@ -1575,54 +1569,54 @@ case 12:
 	 ;
     break;}
 case 13:
-/* #line 237 "control.y" */
+#line 237 "control.y"
 { ; ;
     break;}
 case 14:
-/* #line 238 "control.y" */
+#line 238 "control.y"
 { if(variable_name[0] != '\0') make_local_variable(variable_name); ;
     break;}
 case 15:
-/* #line 239 "control.y" */
+#line 239 "control.y"
 { ; ;
     break;}
 case 16:
-/* #line 241 "control.y" */
+#line 241 "control.y"
 {
 	    delete_last_history(1);	/* forget this command */
 	    delete_last_history(1);	/* and the last one too */
 	 ;
     break;}
 case 17:
-/* #line 246 "control.y" */
+#line 246 "control.y"
 { delete_history(yyvsp[0].intval,yyvsp[0].intval,1); ;
     break;}
 case 18:
-/* #line 248 "control.y" */
+#line 248 "control.y"
 { delete_history(yyvsp[-1].intval,yyvsp[0].intval,1); ;
     break;}
 case 19:
-/* #line 250 "control.y" */
+#line 250 "control.y"
 { delete_last_history(0); ;
     break;}
 case 20:
-/* #line 252 "control.y" */
+#line 252 "control.y"
 { delete_last_history(1); ;
     break;}
 case 21:
-/* #line 254 "control.y" */
+#line 254 "control.y"
 { delete_history(yyvsp[0].intval,yyvsp[0].intval,0); ;
     break;}
 case 22:
-/* #line 256 "control.y" */
+#line 256 "control.y"
 { delete_history(yyvsp[-1].intval,yyvsp[0].intval,0); ;
     break;}
 case 23:
-/* #line 258 "control.y" */
+#line 258 "control.y"
 { (void)free_vector(yyvsp[0].charval); ;
     break;}
 case 24:
-/* #line 260 "control.y" */
+#line 260 "control.y"
 {
 	      if(graph_mode) IDLE();
 	      CLOSE(); stg_close();
@@ -1643,7 +1637,7 @@ case 24:
 	   ;
     break;}
 case 25:
-/* #line 279 "control.y" */
+#line 279 "control.y"
 {
 	      if(strcmp(yyvsp[0].charval,"close") == 0 || strcmp(yyvsp[0].charval,"CLOSE") == 0) {
 		 close_metafile();
@@ -1653,7 +1647,7 @@ case 25:
 	   ;
     break;}
 case 26:
-/* #line 287 "control.y" */
+#line 287 "control.y"
 {
     	      int dn, len;
 
@@ -1677,7 +1671,7 @@ case 26:
 	   ;
     break;}
 case 27:
-/* #line 309 "control.y" */
+#line 309 "control.y"
 {
 	    if(sm_dither(yyvsp[-4].charval, yyvsp[-3].charval, yyvsp[-2].floatval, yyvsp[-1].floatval, yyvsp[0].intval) < 0) {
 	       break;
@@ -1685,7 +1679,7 @@ case 27:
 	 ;
     break;}
 case 28:
-/* #line 315 "control.y" */
+#line 315 "control.y"
 {
 	    if(variable_name[0] == '\0' || yyvsp[-1].strval.start == NULL) {
 	       if(yyvsp[-1].strval.start != NULL) free(yyvsp[-1].strval.start);
@@ -1699,15 +1693,15 @@ case 28:
          ;
     break;}
 case 29:
-/* #line 326 "control.y" */
+#line 326 "control.y"
 { (void)mscanstr(yyval.charval,CHARMAX); ;
     break;}
 case 30:
-/* #line 327 "control.y" */
+#line 327 "control.y"
 { define_map(yyvsp[-1].charval,yyvsp[0].charval); ;
     break;}
 case 31:
-/* #line 329 "control.y" */
+#line 329 "control.y"
 {
 	    lexflush();			/* flush lex buffer */
             yyerrok;
@@ -1730,14 +1724,14 @@ case 31:
          ;
     break;}
 case 32:
-/* #line 350 "control.y" */
+#line 350 "control.y"
 {
 	    set_expand(yyvsp[0].vector.vec.f,yyvsp[0].vector.dimen);
 	    vec_free(&yyvsp[0].vector);
 	 ;
     break;}
 case 33:
-/* #line 355 "control.y" */
+#line 355 "control.y"
 {
 	    VECTOR *temp_r,*temp_i;
 	    
@@ -1772,7 +1766,7 @@ case 33:
 	 ;
     break;}
 case 34:
-/* #line 388 "control.y" */
+#line 388 "control.y"
 {
 	    if(variable_name[0] == '\0' || yyvsp[-3].t_list == NULL || yyvsp[-1].strval.start == NULL) {
 	       freelist(yyvsp[-3].t_list);
@@ -1791,29 +1785,29 @@ case 34:
          ;
     break;}
 case 35:
-/* #line 405 "control.y" */
+#line 405 "control.y"
 { sm_format( yyvsp[-1].charval, yyvsp[0].charval ); ;
     break;}
 case 36:
-/* #line 407 "control.y" */
+#line 407 "control.y"
 {
 	    sm_format("1","1");
 	    (void)unput('\n');
 	 ;
     break;}
 case 37:
-/* #line 411 "control.y" */
+#line 411 "control.y"
 {
 	   in_graphics = 1;
 	   if(!graph_mode) { ENABLE(); graph_mode = 1; }
         ;
     break;}
 case 38:
-/* #line 416 "control.y" */
+#line 416 "control.y"
 { in_graphics = 0; GFLUSH(); ;
     break;}
 case 39:
-/* #line 418 "control.y" */
+#line 418 "control.y"
 {
 	    char *var;
 	    int i,j;
@@ -1846,15 +1840,15 @@ case 39:
          ;
     break;}
 case 40:
-/* #line 449 "control.y" */
+#line 449 "control.y"
 { history_list(1); ;
     break;}
 case 41:
-/* #line 451 "control.y" */
+#line 451 "control.y"
 { history_list(-1); ;
     break;}
 case 42:
-/* #line 453 "control.y" */
+#line 453 "control.y"
 {
 	    (void)unput('\n');
 	    if(yyvsp[-2].strval.start == NULL) break;
@@ -1866,7 +1860,7 @@ case 42:
 	 ;
     break;}
 case 43:
-/* #line 463 "control.y" */
+#line 463 "control.y"
 {
 	    char *if_body;
 	    
@@ -1891,7 +1885,7 @@ case 43:
 	 ;
     break;}
 case 44:
-/* #line 486 "control.y" */
+#line 486 "control.y"
 {
 	    sm_cursor(1);
 	    sm_disable();
@@ -1899,7 +1893,7 @@ case 44:
 	 ;
     break;}
 case 45:
-/* #line 492 "control.y" */
+#line 492 "control.y"
 {
 	    set_cursor_vectors(yyvsp[-2].charval,yyvsp[-1].charval,yyvsp[0].charval);
 	    sm_disable();
@@ -1907,34 +1901,34 @@ case 45:
 	 ;
     break;}
 case 46:
-/* #line 498 "control.y" */
+#line 498 "control.y"
 { (void)sm_delimage(); ;
     break;}
 case 47:
-/* #line 500 "control.y" */
+#line 500 "control.y"
 { (void)read_image(yyvsp[0].charval,0.0,0.0,0.0,0.0); ;
     break;}
 case 48:
-/* #line 502 "control.y" */
+#line 502 "control.y"
 { (void)read_image(yyvsp[-4].charval,yyvsp[-3].floatval,yyvsp[-2].floatval,yyvsp[-1].floatval,yyvsp[0].floatval); ;
     break;}
 case 49:
-/* #line 504 "control.y" */
+#line 504 "control.y"
 { create_image(yyvsp[-3].intval,yyvsp[-1].intval,0.0,(float)yyvsp[-3].intval - 1,0.0,(float)yyvsp[-1].intval - 1); ;
     break;}
 case 50:
-/* #line 506 "control.y" */
+#line 506 "control.y"
 { create_image(yyvsp[-7].intval,yyvsp[-5].intval,yyvsp[-3].floatval,yyvsp[-2].floatval,yyvsp[-1].floatval,yyvsp[0].floatval); ;
     break;}
 case 51:
-/* #line 508 "control.y" */
+#line 508 "control.y"
 {
 	    sm_levels(yyvsp[0].vector.vec.f,(int)yyvsp[0].vector.dimen);
 	    vec_free(&yyvsp[0].vector);
          ;
     break;}
 case 52:
-/* #line 513 "control.y" */
+#line 513 "control.y"
 {
 	    if(fabs(x_range) > 1e-20) {
 	       yyvsp[-1].pairval.a = yyvsp[-1].pairval.med - x_range/2;
@@ -1948,11 +1942,11 @@ case 52:
 	 ;
     break;}
 case 53:
-/* #line 525 "control.y" */
+#line 525 "control.y"
 { key_macro(); ;
     break;}
 case 54:
-/* #line 527 "control.y" */
+#line 527 "control.y"
 {
 	    line_1 = yyvsp[-1].intval;
 	    line_2 = yyvsp[0].intval;
@@ -1961,19 +1955,19 @@ case 54:
 	 ;
     break;}
 case 55:
-/* #line 533 "control.y" */
+#line 533 "control.y"
 { disable_overload(); ;
     break;}
 case 56:
-/* #line 533 "control.y" */
+#line 533 "control.y"
 { allow_overload(); ;
     break;}
 case 57:
-/* #line 535 "control.y" */
+#line 535 "control.y"
 { (void)sm_location( yyvsp[-3].intval, yyvsp[-2].intval, yyvsp[-1].intval, yyvsp[0].intval); ;
     break;}
 case 58:
-/* #line 537 "control.y" */
+#line 537 "control.y"
 {
 	    if(yyvsp[0].floatval < 0) {
 	       msg("LWEIGHT cannot be negative; setting to zero\n");
@@ -1983,7 +1977,7 @@ case 58:
 	 ;
     break;}
 case 59:
-/* #line 545 "control.y" */
+#line 545 "control.y"
 {
 	    if(yyvsp[0].strval.start == NULL) break;
             *(yyvsp[0].strval.end) = '\0';		/* remove '\n' */
@@ -1994,19 +1988,19 @@ case 59:
          ;
     break;}
 case 60:
-/* #line 554 "control.y" */
+#line 554 "control.y"
 { (void)define(yyvsp[-1].charval,"delete",0,0,0); ;
     break;}
 case 61:
-/* #line 556 "control.y" */
+#line 556 "control.y"
 { (void)define_history_macro(yyvsp[-2].charval,yyvsp[-1].intval,yyvsp[0].intval);;
     break;}
 case 62:
-/* #line 558 "control.y" */
+#line 558 "control.y"
 { (void)macro_edit(yyvsp[0].charval); ;
     break;}
 case 63:
-/* #line 560 "control.y" */
+#line 560 "control.y"
 {
 	    FILE *fil;
 
@@ -2019,11 +2013,11 @@ case 63:
 	 ;
     break;}
 case 64:
-/* #line 571 "control.y" */
+#line 571 "control.y"
 { (void)undefine_macros(yyvsp[0].charval); ;
     break;}
 case 65:
-/* #line 573 "control.y" */
+#line 573 "control.y"
 {
 	    FILE *fil;
 
@@ -2040,15 +2034,15 @@ case 65:
          ;
     break;}
 case 66:
-/* #line 588 "control.y" */
+#line 588 "control.y"
 { (void)write_one_macro(yyvsp[-2].charval,yyvsp[0].charval,(yyvsp[-1].intval == '+')); ;
     break;}
 case 67:
-/* #line 590 "control.y" */
+#line 590 "control.y"
 { playback_metafile(yyvsp[0].charval); ;
     break;}
 case 68:
-/* #line 592 "control.y" */
+#line 592 "control.y"
 {
 	    float min,max;
 
@@ -2060,15 +2054,15 @@ case 68:
 	 ;
     break;}
 case 69:
-/* #line 602 "control.y" */
+#line 602 "control.y"
 { sm_notation( yyvsp[-3].floatval, yyvsp[-2].floatval, yyvsp[-1].floatval, yyvsp[0].floatval ); ;
     break;}
 case 70:
-/* #line 604 "control.y" */
+#line 604 "control.y"
 { overload(variable_name,yyvsp[0].intval); ;
     break;}
 case 71:
-/* #line 606 "control.y" */
+#line 606 "control.y"
 {
 	    int append = (yyvsp[-3].intval == '+');  
 	    int dimen = 0,i,nvec;
@@ -2112,7 +2106,7 @@ case 71:
 	 ;
     break;}
 case 72:
-/* #line 648 "control.y" */
+#line 648 "control.y"
 {
 	    int i;
 
@@ -2127,7 +2121,7 @@ case 72:
          ;
     break;}
 case 73:
-/* #line 661 "control.y" */
+#line 661 "control.y"
 {
 	    REAL pstyle[1];
 
@@ -2136,7 +2130,7 @@ case 73:
 	 ;
     break;}
 case 74:
-/* #line 668 "control.y" */
+#line 668 "control.y"
 {
 	    VECTOR *tptr;
 
@@ -2158,7 +2152,7 @@ case 74:
 	 ;
     break;}
 case 75:
-/* #line 688 "control.y" */
+#line 688 "control.y"
 {
 	    if(yyvsp[-1].vector.type != VEC_FLOAT) {
 	       msg_1s("%s is not an arithmetic expression\n",yyvsp[-1].vector.name);
@@ -2169,7 +2163,7 @@ case 75:
 	 ;
     break;}
 case 76:
-/* #line 697 "control.y" */
+#line 697 "control.y"
 {
 	    if(yyvsp[0].t_list == NULL) break;
 	    if(yyvsp[0].t_list->nitem <= 0) {	/* Null symbol list */
@@ -2183,7 +2177,7 @@ case 76:
 	 ;
     break;}
 case 77:
-/* #line 709 "control.y" */
+#line 709 "control.y"
 {
 	    if(graph_mode) IDLE();
 	    CLOSE(); stg_close();
@@ -2191,22 +2185,22 @@ case 77:
 	 ;
     break;}
 case 78:
-/* #line 715 "control.y" */
+#line 715 "control.y"
 {
 	    x_range = yyvsp[-1].floatval;
 	    y_range = yyvsp[0].floatval;
 	 ;
     break;}
 case 79:
-/* #line 720 "control.y" */
+#line 720 "control.y"
 { (void)read_map(yyvsp[0].charval); ;
     break;}
 case 80:
-/* #line 722 "control.y" */
+#line 722 "control.y"
 { read_old(yyvsp[-1].charval,yyvsp[0].charval); ;
     break;}
 case 81:
-/* #line 724 "control.y" */
+#line 724 "control.y"
 {
 	    int col;
 	    VECTOR temp;
@@ -2220,7 +2214,7 @@ case 81:
 	 ;
     break;}
 case 82:
-/* #line 736 "control.y" */
+#line 736 "control.y"
 {
 	    int col;
 	    VECTOR *tptr,temp;
@@ -2235,7 +2229,7 @@ case 82:
 	 ;
     break;}
 case 83:
-/* #line 749 "control.y" */
+#line 749 "control.y"
 {
 	    int *cols,			/* desired columns */
 	        extra,			/* extra i_list items processed */
@@ -2394,7 +2388,7 @@ case 83:
 	 ;
     break;}
 case 84:
-/* #line 906 "control.y" */
+#line 906 "control.y"
 {
 	    int i,cols[1],nvec;
 	    VECTOR **vecs, *s_vecs;
@@ -2429,7 +2423,7 @@ case 84:
 	 ;
     break;}
 case 85:
-/* #line 939 "control.y" */
+#line 939 "control.y"
 {
 	    int i, j;
 	    int nvec;			/* number of vector's names */
@@ -2530,19 +2524,19 @@ case 85:
 	 ;
     break;}
 case 86:
-/* #line 1038 "control.y" */
+#line 1038 "control.y"
 { restore(yyvsp[0].charval); ;
     break;}
 case 87:
-/* #line 1040 "control.y" */
+#line 1040 "control.y"
 { mac_return(); ;
     break;}
 case 88:
-/* #line 1042 "control.y" */
+#line 1042 "control.y"
 { save(yyvsp[0].charval,0); ;
     break;}
 case 89:
-/* #line 1044 "control.y" */
+#line 1044 "control.y"
 {
 	    int dimension,i;
 	    VECTOR *temp;
@@ -2563,7 +2557,7 @@ case 89:
 	 ;
     break;}
 case 90:
-/* #line 1063 "control.y" */
+#line 1063 "control.y"
 {
 	    if(*mgets(word,CHARMAX) != '\0') {
 	       set_help_vector(yyvsp[0].charval,&word[1]);
@@ -2571,7 +2565,7 @@ case 90:
 	 ;
     break;}
 case 91:
-/* #line 1069 "control.y" */
+#line 1069 "control.y"
 {
 	    if(sm_verbose) {
 	       msg("\"set image(expr,expr) = expr\" is obsolete; ");
@@ -2581,43 +2575,43 @@ case 91:
 	 ;
     break;}
 case 92:
-/* #line 1077 "control.y" */
+#line 1077 "control.y"
 { vec_set_image_from_index(&yyvsp[-5].vector,&yyvsp[-3].vector,&yyvsp[0].vector); ;
     break;}
 case 93:
-/* #line 1079 "control.y" */
+#line 1079 "control.y"
 { vec_set_image_from_index(NULL,&yyvsp[-3].vector,&yyvsp[0].vector); ;
     break;}
 case 94:
-/* #line 1081 "control.y" */
+#line 1081 "control.y"
 { vec_set_image_from_index(&yyvsp[-5].vector,NULL,&yyvsp[0].vector); ;
     break;}
 case 95:
-/* #line 1083 "control.y" */
+#line 1083 "control.y"
 { vec_set_image_from_index(NULL,NULL,&yyvsp[0].vector); ;
     break;}
 case 96:
-/* #line 1085 "control.y" */
+#line 1085 "control.y"
 { set_random((long)yyvsp[0].floatval); ;
     break;}
 case 97:
-/* #line 1087 "control.y" */
+#line 1087 "control.y"
 { make_local_vector(yyvsp[-1].charval); ;
     break;}
 case 98:
-/* #line 1089 "control.y" */
+#line 1089 "control.y"
 { (void)copy_vector(yyvsp[-2].charval,yyvsp[0].vector); ;
     break;}
 case 99:
-/* #line 1090 "control.y" */
+#line 1090 "control.y"
 { make_local_vector(yyvsp[0].charval); ;
     break;}
 case 100:
-/* #line 1091 "control.y" */
+#line 1091 "control.y"
 { (void)copy_vector(yyvsp[-3].charval,yyvsp[0].vector); ;
     break;}
 case 101:
-/* #line 1093 "control.y" */
+#line 1093 "control.y"
 {
 	    VECTOR *x;
 
@@ -2629,7 +2623,7 @@ case 101:
 	 ;
     break;}
 case 102:
-/* #line 1103 "control.y" */
+#line 1103 "control.y"
 {
 	    int c;
 	    
@@ -2650,7 +2644,7 @@ case 102:
 	 ;
     break;}
 case 103:
-/* #line 1122 "control.y" */
+#line 1122 "control.y"
 {
 	    int dimen = 0,
 	    	i,k,nvec,
@@ -2744,11 +2738,11 @@ case 103:
 	 ;
     break;}
 case 104:
-/* #line 1214 "control.y" */
+#line 1214 "control.y"
 { (void)spline(yyvsp[-3].charval,yyvsp[-2].charval,yyvsp[-1].charval,yyvsp[0].charval); ;
     break;}
 case 105:
-/* #line 1216 "control.y" */
+#line 1216 "control.y"
 {
 	    FILE *fil;
 
@@ -2768,15 +2762,15 @@ case 105:
 	 ;
     break;}
 case 106:
-/* #line 1234 "control.y" */
+#line 1234 "control.y"
 { sm_ticksize( yyvsp[-3].floatval, yyvsp[-2].floatval, yyvsp[-1].floatval, yyvsp[0].floatval); ;
     break;}
 case 107:
-/* #line 1236 "control.y" */
+#line 1236 "control.y"
 { (void)set_term_type(yyvsp[-1].charval,yyvsp[0].intval); ;
     break;}
 case 108:
-/* #line 1238 "control.y" */
+#line 1238 "control.y"
 {
 	    static int abort_depth = 0;	/* depth of nesting abort handlers */
 	    char *ptr;
@@ -2815,7 +2809,7 @@ case 108:
 	 ;
     break;}
 case 109:
-/* #line 1275 "control.y" */
+#line 1275 "control.y"
 {
 	     word[1] = '\0';
 	     if(mgets(word,CHARMAX) != NULL) {
@@ -2824,7 +2818,7 @@ case 109:
 	  ;
     break;}
 case 110:
-/* #line 1282 "control.y" */
+#line 1282 "control.y"
 {
 	    if(yyvsp[0].floatval < 0) {
 #if defined(YYDEBUG)
@@ -2836,11 +2830,11 @@ case 110:
 	 ;
     break;}
 case 111:
-/* #line 1292 "control.y" */
+#line 1292 "control.y"
 { sm_set_viewpoint(yyvsp[-2].floatval,yyvsp[-1].floatval,yyvsp[0].floatval); ;
     break;}
 case 112:
-/* #line 1294 "control.y" */
+#line 1294 "control.y"
 {
 	    char *cmd;
 	    char *fmt = "IF(%s) { %s } ELSE { BREAK }\n ";
@@ -2862,27 +2856,27 @@ case 112:
 	 ;
     break;}
 case 113:
-/* #line 1314 "control.y" */
+#line 1314 "control.y"
 { end_while(); ;
     break;}
 case 114:
-/* #line 1316 "control.y" */
+#line 1316 "control.y"
 { sm_window( yyvsp[-3].intval, yyvsp[-2].intval, yyvsp[-1].intval, yyvsp[0].intval, yyvsp[-1].intval, yyvsp[0].intval); ;
     break;}
 case 115:
-/* #line 1318 "control.y" */
+#line 1318 "control.y"
 { sm_window( yyvsp[-5].intval, yyvsp[-4].intval, yyvsp[-3].intval, yyvsp[-2].intval, yyvsp[-3].intval, yyvsp[0].intval); ;
     break;}
 case 116:
-/* #line 1320 "control.y" */
+#line 1320 "control.y"
 { sm_window( yyvsp[-5].intval, yyvsp[-4].intval, yyvsp[-3].intval, yyvsp[0].intval, yyvsp[-1].intval, yyvsp[0].intval); ;
     break;}
 case 117:
-/* #line 1322 "control.y" */
+#line 1322 "control.y"
 { sm_window( yyvsp[-7].intval, yyvsp[-6].intval, yyvsp[-5].intval, yyvsp[-2].intval, yyvsp[-3].intval, yyvsp[0].intval); ;
     break;}
 case 118:
-/* #line 1324 "control.y" */
+#line 1324 "control.y"
 {
             if(execute(yyvsp[0].charval) == 0) {	/* it's a macro */
 	       start_line();		/* start a new line in tokens.c */
@@ -2916,18 +2910,18 @@ case 118:
          ;
     break;}
 case 119:
-/* #line 1356 "control.y" */
+#line 1356 "control.y"
 { (void)read_history_macro(yyvsp[0].charval); ;
     break;}
 case 120:
-/* #line 1358 "control.y" */
+#line 1358 "control.y"
 {
 	    (void)mgets(buff,MACROSIZE);
 	    msg_1s("%s\n",&buff[*buff == '\0' ? 0 : 1]); /* skip ' ' */
          ;
     break;}
 case 121:
-/* #line 1363 "control.y" */
+#line 1363 "control.y"
 {
 	    static char file[80] = "";	/* name of file */
 	    FILE *fil;
@@ -2953,7 +2947,7 @@ case 121:
          ;
     break;}
 case 122:
-/* #line 1389 "control.y" */
+#line 1389 "control.y"
 {
 	    if((yyval.t_list = getlist((TOK_LIST *)NULL)) == NULL) {
 	       break;
@@ -2961,7 +2955,7 @@ case 122:
 	 ;
     break;}
 case 123:
-/* #line 1395 "control.y" */
+#line 1395 "control.y"
 {
 	    if((yyval.t_list = getlist((TOK_LIST *)NULL)) == NULL) {
 	       break;
@@ -2972,7 +2966,7 @@ case 123:
 	 ;
     break;}
 case 124:
-/* #line 1404 "control.y" */
+#line 1404 "control.y"
 {
 	    if(yyvsp[-2].t_list == NULL) {		/* couldn't get space */
 	       yyval.t_list = NULL;
@@ -2989,7 +2983,7 @@ case 124:
 	 ;
     break;}
 case 125:
-/* #line 1419 "control.y" */
+#line 1419 "control.y"
 {
 	    if((yyval.t_list = getlist((TOK_LIST *)NULL)) == NULL) {
 	       break;
@@ -3000,7 +2994,7 @@ case 125:
 	 ;
     break;}
 case 126:
-/* #line 1428 "control.y" */
+#line 1428 "control.y"
 {
 	    if(yyvsp[-2].t_list == NULL) {		/* couldn't get space */
 	       yyval.t_list = NULL;
@@ -3017,7 +3011,7 @@ case 126:
 	 ;
     break;}
 case 127:
-/* #line 1445 "control.y" */
+#line 1445 "control.y"
 {
 	    int i,j,
 	        type;			/* type of vector */
@@ -3048,11 +3042,11 @@ case 127:
 	 ;
     break;}
 case 128:
-/* #line 1474 "control.y" */
+#line 1474 "control.y"
 { vec_concat(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 129:
-/* #line 1476 "control.y" */
+#line 1476 "control.y"
 {
 	    if(yyvsp[0].charval[0] == '0') {		/* may be a hex or octal constant */
 	       REAL val;
@@ -3071,7 +3065,7 @@ case 129:
 	 ;
     break;}
 case 130:
-/* #line 1493 "control.y" */
+#line 1493 "control.y"
 {
 	    if(make_anon_vector(&yyval.vector,1,VEC_STRING) == 0) {
 	       (void)strncpy(yyval.vector.vec.s.s[0],yyvsp[0].charval,VEC_STR_SIZE);
@@ -3081,7 +3075,7 @@ case 130:
 	 ;
     break;}
 case 131:
-/* #line 1501 "control.y" */
+#line 1501 "control.y"
 {
 	    char *mtext;		/* body of macro */
 	    int i,narg_min,narg_max;
@@ -3140,7 +3134,7 @@ case 131:
 	 ;
     break;}
 case 132:
-/* #line 1558 "control.y" */
+#line 1558 "control.y"
 {
 	    int i,j;
 	    VECTOR *temp;
@@ -3185,11 +3179,11 @@ case 132:
 	 ;
     break;}
 case 133:
-/* #line 1601 "control.y" */
+#line 1601 "control.y"
 { yyval.vector = yyvsp[-1].vector; ;
     break;}
 case 134:
-/* #line 1603 "control.y" */
+#line 1603 "control.y"
 {
 	    VECTOR zero;		/* scalar with value 0 */
 
@@ -3198,49 +3192,49 @@ case 134:
 	 ;
     break;}
 case 135:
-/* #line 1610 "control.y" */
+#line 1610 "control.y"
 { vec_ternary(&yyvsp[-4].vector,&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 136:
-/* #line 1612 "control.y" */
+#line 1612 "control.y"
 { vec_abs(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 137:
-/* #line 1614 "control.y" */
+#line 1614 "control.y"
 { vec_acos(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 138:
-/* #line 1616 "control.y" */
+#line 1616 "control.y"
 { vec_asin(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 139:
-/* #line 1618 "control.y" */
+#line 1618 "control.y"
 { vec_atan(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 140:
-/* #line 1620 "control.y" */
+#line 1620 "control.y"
 { vec_atan2(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 141:
-/* #line 1622 "control.y" */
+#line 1622 "control.y"
 { vec_cos(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 142:
-/* #line 1624 "control.y" */
+#line 1624 "control.y"
 {
 	    yyval.vector.type = VEC_FLOAT;
 	    vec_ctype(&yyval.vector);
 	 ;
     break;}
 case 143:
-/* #line 1629 "control.y" */
+#line 1629 "control.y"
 {
 	    yyval.vector.type = VEC_STRING;
 	    vec_ctype(&yyval.vector);
 	 ;
     break;}
 case 144:
-/* #line 1634 "control.y" */
+#line 1634 "control.y"
 {
 	    if(make_anon_vector(&yyval.vector,0,VEC_NULL) != 0) {
 	       break;
@@ -3251,7 +3245,7 @@ case 144:
 	 ;
     break;}
 case 145:
-/* #line 1643 "control.y" */
+#line 1643 "control.y"
 {
 	    if(make_anon_vector(&yyval.vector,0,VEC_NULL) != 0) {
 	       break;
@@ -3262,47 +3256,47 @@ case 145:
 	 ;
     break;}
 case 146:
-/* #line 1652 "control.y" */
+#line 1652 "control.y"
 { vec_exp(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 147:
-/* #line 1654 "control.y" */
+#line 1654 "control.y"
 { vec_add(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 148:
-/* #line 1656 "control.y" */
+#line 1656 "control.y"
 { vec_subtract(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 149:
-/* #line 1658 "control.y" */
+#line 1658 "control.y"
 { vec_multiply(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 150:
-/* #line 1660 "control.y" */
+#line 1660 "control.y"
 { vec_divide(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 151:
-/* #line 1662 "control.y" */
+#line 1662 "control.y"
 { vec_power(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 152:
-/* #line 1664 "control.y" */
+#line 1664 "control.y"
 { vec_mod(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 153:
-/* #line 1666 "control.y" */
+#line 1666 "control.y"
 { vec_bitand(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 154:
-/* #line 1668 "control.y" */
+#line 1668 "control.y"
 { vec_bitor(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 155:
-/* #line 1670 "control.y" */
+#line 1670 "control.y"
 { vec_eq(&yyvsp[-3].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 156:
-/* #line 1672 "control.y" */
+#line 1672 "control.y"
 {
 	    VECTOR zero;		/* scalar with value 0 */
 
@@ -3311,167 +3305,167 @@ case 156:
 	 ;
     break;}
 case 157:
-/* #line 1679 "control.y" */
+#line 1679 "control.y"
 { vec_ne(&yyvsp[-3].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 158:
-/* #line 1681 "control.y" */
+#line 1681 "control.y"
 { vec_and(&yyvsp[-3].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 159:
-/* #line 1683 "control.y" */
+#line 1683 "control.y"
 { vec_or(&yyvsp[-3].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 160:
-/* #line 1685 "control.y" */
+#line 1685 "control.y"
 { vec_gt(&yyvsp[-2].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 161:
-/* #line 1687 "control.y" */
+#line 1687 "control.y"
 { vec_ge(&yyvsp[-3].vector,&yyvsp[0].vector,&yyval.vector); ;
     break;}
 case 162:
-/* #line 1689 "control.y" */
+#line 1689 "control.y"
 { vec_gt(&yyvsp[0].vector,&yyvsp[-2].vector,&yyval.vector); ;
     break;}
 case 163:
-/* #line 1691 "control.y" */
+#line 1691 "control.y"
 { vec_ge(&yyvsp[0].vector,&yyvsp[-3].vector,&yyval.vector); ;
     break;}
 case 164:
-/* #line 1693 "control.y" */
+#line 1693 "control.y"
 { vec_float(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 165:
-/* #line 1695 "control.y" */
+#line 1695 "control.y"
 { vec_gamma(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 166:
-/* #line 1697 "control.y" */
+#line 1697 "control.y"
 { vec_hist(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 167:
-/* #line 1699 "control.y" */
+#line 1699 "control.y"
 { vec_interp(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 168:
-/* #line 1701 "control.y" */
+#line 1701 "control.y"
 { vec_get_image_from_index(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 169:
-/* #line 1703 "control.y" */
+#line 1703 "control.y"
 { vec_get_image_from_index(NULL,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 170:
-/* #line 1705 "control.y" */
+#line 1705 "control.y"
 { vec_get_image_from_index(&yyvsp[-3].vector,NULL,&yyval.vector); ;
     break;}
 case 171:
-/* #line 1707 "control.y" */
+#line 1707 "control.y"
 { vec_get_image_from_index(NULL,NULL,&yyval.vector); ;
     break;}
 case 172:
-/* #line 1709 "control.y" */
+#line 1709 "control.y"
 { vec_index(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 173:
-/* #line 1711 "control.y" */
+#line 1711 "control.y"
 { vec_int(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 174:
-/* #line 1713 "control.y" */
+#line 1713 "control.y"
 { vec_length(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 175:
-/* #line 1715 "control.y" */
+#line 1715 "control.y"
 { vec_lg(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 176:
-/* #line 1717 "control.y" */
+#line 1717 "control.y"
 { vec_ln(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 177:
-/* #line 1719 "control.y" */
+#line 1719 "control.y"
 { (void)vec_value(&yyval.vector,yyvsp[0].floatval); ;
     break;}
 case 178:
-/* #line 1721 "control.y" */
+#line 1721 "control.y"
 { (void)vec_value(&yyval.vector,Pi); ;
     break;}
 case 179:
-/* #line 1723 "control.y" */
+#line 1723 "control.y"
 { vec_random((int)yyvsp[-1].floatval,&yyval.vector); ;
     break;}
 case 180:
-/* #line 1725 "control.y" */
+#line 1725 "control.y"
 { vec_sin(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 181:
-/* #line 1727 "control.y" */
+#line 1727 "control.y"
 { vec_sprintf(&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 182:
-/* #line 1729 "control.y" */
+#line 1729 "control.y"
 { vec_sqrt(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 183:
-/* #line 1731 "control.y" */
+#line 1731 "control.y"
 { vec_string(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 184:
-/* #line 1733 "control.y" */
+#line 1733 "control.y"
 { vec_strlen(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 185:
-/* #line 1735 "control.y" */
+#line 1735 "control.y"
 { vec_substr(&yyvsp[-5].vector,&yyvsp[-3].vector,&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 186:
-/* #line 1737 "control.y" */
+#line 1737 "control.y"
 { vec_tan(&yyvsp[-1].vector,&yyval.vector); ;
     break;}
 case 187:
-/* #line 1741 "control.y" */
+#line 1741 "control.y"
 { yyval.t_list = yyvsp[-1].t_list; ;
     break;}
 case 188:
-/* #line 1743 "control.y" */
+#line 1743 "control.y"
 { yyval.t_list = yyvsp[-1].t_list; ;
     break;}
 case 189:
-/* #line 1747 "control.y" */
+#line 1747 "control.y"
 { yyval.strval = yyvsp[-1].strval; ;
     break;}
 case 190:
-/* #line 1749 "control.y" */
+#line 1749 "control.y"
 { yyval.strval = yyvsp[-1].strval; ;
     break;}
 case 191:
-/* #line 1753 "control.y" */
+#line 1753 "control.y"
 { yyval.intval = 1; ;
     break;}
 case 192:
-/* #line 1755 "control.y" */
+#line 1755 "control.y"
 { yyval.intval = 2; ;
     break;}
 case 193:
-/* #line 1759 "control.y" */
+#line 1759 "control.y"
 { yyval.intval = '!'; ;
     break;}
 case 194:
-/* #line 1761 "control.y" */
+#line 1761 "control.y"
 { yyval.intval =  ' '; ;
     break;}
 case 195:
-/* #line 1765 "control.y" */
+#line 1765 "control.y"
 { yyval.t_list = yyvsp[-1].t_list; ;
     break;}
 case 196:
-/* #line 1767 "control.y" */
+#line 1767 "control.y"
 { yyval.t_list = yyvsp[0].t_list; ;
     break;}
 case 197:
-/* #line 1769 "control.y" */
+#line 1769 "control.y"
 {
 	    int i;
 	    VECTOR *v;
@@ -3509,15 +3503,15 @@ case 197:
 	 ;
     break;}
 case 198:
-/* #line 1808 "control.y" */
+#line 1808 "control.y"
 { (void)sm_axis( yyvsp[-8].floatval, yyvsp[-7].floatval, yyvsp[-6].floatval, yyvsp[-5].floatval, yyvsp[-4].intval, yyvsp[-3].intval, yyvsp[-2].intval, yyvsp[-1].intval, yyvsp[0].intval ); ;
     break;}
 case 199:
-/* #line 1810 "control.y" */
+#line 1810 "control.y"
 { vec_axis( yyvsp[-8].floatval, yyvsp[-7].floatval, &yyvsp[-6].vector, &yyvsp[-5].vector, (VECTOR *)NULL, yyvsp[-4].intval, yyvsp[-3].intval, yyvsp[-2].intval, yyvsp[-1].intval, yyvsp[0].intval ); ;
     break;}
 case 200:
-/* #line 1813 "control.y" */
+#line 1813 "control.y"
 {
 	    VECTOR *lab;
 	    
@@ -3537,54 +3531,54 @@ case 200:
 	 ;
     break;}
 case 201:
-/* #line 1831 "control.y" */
+#line 1831 "control.y"
 { sm_box(1,2,0,0); ;
     break;}
 case 202:
-/* #line 1833 "control.y" */
+#line 1833 "control.y"
 { sm_box(yyvsp[-1].intval,yyvsp[0].intval,0,0); ;
     break;}
 case 203:
-/* #line 1835 "control.y" */
+#line 1835 "control.y"
 { sm_box(yyvsp[-3].intval,yyvsp[-2].intval,yyvsp[-1].intval,yyvsp[0].intval); ;
     break;}
 case 204:
-/* #line 1837 "control.y" */
+#line 1837 "control.y"
 { (void)sm_contour(); ;
     break;}
 case 205:
-/* #line 1839 "control.y" */
+#line 1839 "control.y"
 {
 	    set_color(&yyvsp[0].vector);
 	    vec_free(&yyvsp[0].vector);
 	 ;
     break;}
 case 206:
-/* #line 1844 "control.y" */
+#line 1844 "control.y"
 { sm_ctype_i(yyvsp[0].intval); ;
     break;}
 case 207:
-/* #line 1846 "control.y" */
+#line 1846 "control.y"
 { sm_ctype(yyvsp[0].charval); ;
     break;}
 case 208:
-/* #line 1848 "control.y" */
+#line 1848 "control.y"
 { sm_dot(); ;
     break;}
 case 209:
-/* #line 1850 "control.y" */
+#line 1850 "control.y"
 { sm_draw(yyvsp[-1].floatval,yyvsp[0].floatval); ;
     break;}
 case 210:
-/* #line 1852 "control.y" */
+#line 1852 "control.y"
 { gdraw(yyvsp[-2].floatval,yyvsp[-1].floatval); ;
     break;}
 case 211:
-/* #line 1854 "control.y" */
+#line 1854 "control.y"
 { (*devices[devnum].dev_erase)(); ;
     break;}
 case 212:
-/* #line 1856 "control.y" */
+#line 1856 "control.y"
 {
 	    REAL *temp = NULL;
 	    int i,npoint;
@@ -3625,11 +3619,11 @@ case 212:
 	  ;
     break;}
 case 213:
-/* #line 1895 "control.y" */
+#line 1895 "control.y"
 { sm_grid(yyvsp[-1].intval,yyvsp[0].intval); ;
     break;}
 case 214:
-/* #line 1897 "control.y" */
+#line 1897 "control.y"
 {
 	    if(*mgets(buff,MACROSIZE) != '\0') {
 	       sm_label(&buff[1]);
@@ -3639,19 +3633,19 @@ case 214:
 	 ;
     break;}
 case 215:
-/* #line 1905 "control.y" */
+#line 1905 "control.y"
 { sm_ltype( (int)yyvsp[0].floatval ); ;
     break;}
 case 216:
-/* #line 1907 "control.y" */
+#line 1907 "control.y"
 { sm_ltype( 10 ); ;
     break;}
 case 217:
-/* #line 1909 "control.y" */
+#line 1909 "control.y"
 { (*devices[devnum].dev_page)(); ;
     break;}
 case 218:
-/* #line 1911 "control.y" */
+#line 1911 "control.y"
 {
 	    int npoint;
 
@@ -3678,7 +3672,7 @@ case 218:
 	 ;
     break;}
 case 219:
-/* #line 1936 "control.y" */
+#line 1936 "control.y"
 {
 	    int npoint;
 
@@ -3712,7 +3706,7 @@ case 219:
 	 ;
     break;}
 case 220:
-/* #line 1968 "control.y" */
+#line 1968 "control.y"
 {
 	    if(*mgets(buff,MACROSIZE) != '\0') {
 	       sm_putlabel(yyvsp[0].intval,&buff[1]);
@@ -3722,15 +3716,15 @@ case 220:
 	  ;
     break;}
 case 221:
-/* #line 1976 "control.y" */
+#line 1976 "control.y"
 { sm_relocate(yyvsp[-1].floatval,yyvsp[0].floatval); ;
     break;}
 case 222:
-/* #line 1978 "control.y" */
+#line 1978 "control.y"
 { sm_grelocate(yyvsp[-2].floatval,yyvsp[-1].floatval); ;
     break;}
 case 223:
-/* #line 1980 "control.y" */
+#line 1980 "control.y"
 {
 	    int npoint;
 
@@ -3750,11 +3744,11 @@ case 223:
 	 ;
     break;}
 case 224:
-/* #line 1998 "control.y" */
+#line 1998 "control.y"
 { sm_draw_surface(yyvsp[-2].intval,yyvsp[-1].floatval,yyvsp[0].floatval,(REAL *)NULL,0,(REAL *)NULL,0); ;
     break;}
 case 225:
-/* #line 2000 "control.y" */
+#line 2000 "control.y"
 {
 	    VECTOR *x,*y;
 	    
@@ -3776,7 +3770,7 @@ case 225:
 	 ;
     break;}
 case 226:
-/* #line 2020 "control.y" */
+#line 2020 "control.y"
 {
 	    if(*mgets(buff,MACROSIZE) != '\0') {
 	       sm_xlabel(&buff[1]);
@@ -3786,7 +3780,7 @@ case 226:
 	 ;
     break;}
 case 227:
-/* #line 2028 "control.y" */
+#line 2028 "control.y"
 {
 	    if(*mgets(buff,MACROSIZE) != '\0') {
 	       sm_ylabel(&buff[1]);
@@ -3796,23 +3790,23 @@ case 227:
 	 ;
     break;}
 case 228:
-/* #line 2038 "control.y" */
+#line 2038 "control.y"
 { yyval.intval = yyvsp[0].intval; ;
     break;}
 case 229:
-/* #line 2040 "control.y" */
+#line 2040 "control.y"
 { yyval.intval = -yyvsp[0].intval; ;
     break;}
 case 230:
-/* #line 2044 "control.y" */
+#line 2044 "control.y"
 { yyval.intval = yyvsp[0].intval; ;
     break;}
 case 231:
-/* #line 2046 "control.y" */
+#line 2046 "control.y"
 { yyval.intval = 0; ;
     break;}
 case 232:
-/* #line 2050 "control.y" */
+#line 2050 "control.y"
 {
 	    int i;
 	    float diff,min,max;
@@ -3860,7 +3854,7 @@ case 232:
 	 ;
     break;}
 case 233:
-/* #line 2096 "control.y" */
+#line 2096 "control.y"
 {
 	    yyval.pairval.a = yyvsp[-1].floatval;
 	    yyval.pairval.b = yyvsp[0].floatval;
@@ -3868,11 +3862,11 @@ case 233:
 	 ;
     break;}
 case 234:
-/* #line 2104 "control.y" */
+#line 2104 "control.y"
 { yyval.t_list = getlist((TOK_LIST *)NULL); ;
     break;}
 case 235:
-/* #line 2106 "control.y" */
+#line 2106 "control.y"
 {
 	    if(yyvsp[-1].t_list == NULL) {		/* couldn't get space */
 	       break;
@@ -3887,7 +3881,7 @@ case 235:
 	 ;
     break;}
 case 236:
-/* #line 2119 "control.y" */
+#line 2119 "control.y"
 {
 	    if(yyvsp[-1].t_list == NULL) {		/* couldn't get space */
 	       break;
@@ -3902,7 +3896,7 @@ case 236:
 	 ;
     break;}
 case 237:
-/* #line 2132 "control.y" */
+#line 2132 "control.y"
 {
 	    if(yyvsp[-1].t_list == NULL) {		/* couldn't get space */
 	       break;
@@ -3917,19 +3911,19 @@ case 237:
 	 ;
     break;}
 case 238:
-/* #line 2147 "control.y" */
+#line 2147 "control.y"
 { yyval.floatval = yyvsp[-1].intval ? -yyvsp[0].floatval : yyvsp[0].floatval; ;
     break;}
 case 239:
-/* #line 2149 "control.y" */
+#line 2149 "control.y"
 { yyval.floatval = yyvsp[-1].intval ? -yyvsp[0].intval : yyvsp[0].intval; ;
     break;}
 case 240:
-/* #line 2151 "control.y" */
+#line 2151 "control.y"
 { yyval.floatval = yyvsp[-1].vector.dimen; vec_free(&yyvsp[-1].vector); ;
     break;}
 case 241:
-/* #line 2153 "control.y" */
+#line 2153 "control.y"
 {
 	    int i;
 	    double val;			/* $$ is a float */
@@ -3943,7 +3937,7 @@ case 241:
 	 ;
     break;}
 case 242:
-/* #line 2165 "control.y" */
+#line 2165 "control.y"
 {
 	    int i,tok,vtype;
 	    YYSTYPE lval;
@@ -3982,23 +3976,23 @@ case 242:
 	 ;
     break;}
 case 243:
-/* #line 2204 "control.y" */
+#line 2204 "control.y"
 { (void)sprintf(yyval.charval,"%.10g",yyvsp[0].floatval); ;
     break;}
 case 244:
-/* #line 2206 "control.y" */
+#line 2206 "control.y"
 { (void)strcpy(yyval.charval,yyvsp[0].charval); ;
     break;}
 case 245:
-/* #line 2210 "control.y" */
+#line 2210 "control.y"
 { yyval.floatval = 1; ;
     break;}
 case 246:
-/* #line 2212 "control.y" */
+#line 2212 "control.y"
 { yyval.floatval = yyvsp[0].floatval; ;
     break;}
 case 247:
-/* #line 2216 "control.y" */
+#line 2216 "control.y"
 {
 	    int type;
 
@@ -4011,31 +4005,31 @@ case 247:
 	 ;
     break;}
 case 248:
-/* #line 2227 "control.y" */
+#line 2227 "control.y"
 { yyval.vector = yyvsp[-1].vector; yyval.vector.name = "(expr)"; ;
     break;}
 case 249:
-/* #line 2231 "control.y" */
+#line 2231 "control.y"
 { yyval.intval = CONNECT; ;
     break;}
 case 250:
-/* #line 2233 "control.y" */
+#line 2233 "control.y"
 { yyval.intval = HISTOGRAM; ;
     break;}
 case 251:
-/* #line 2235 "control.y" */
+#line 2235 "control.y"
 { yyval.intval = POINTS; ;
     break;}
 case 252:
-/* #line 2239 "control.y" */
+#line 2239 "control.y"
 { yyval.intval = '+'; ;
     break;}
 case 253:
-/* #line 2241 "control.y" */
+#line 2241 "control.y"
 { yyval.intval =  ' '; ;
     break;}
 case 254:
-/* #line 2245 "control.y" */
+#line 2245 "control.y"
 {
 	    if((yyval.strval.start = malloc(1)) != NULL) {
 	       yyval.strval.start[0] = '\0';
@@ -4044,23 +4038,23 @@ case 254:
 	 ;
     break;}
 case 255:
-/* #line 2252 "control.y" */
+#line 2252 "control.y"
 { yyval.strval = yyvsp[0].strval; ;
     break;}
 case 256:
-/* #line 2256 "control.y" */
+#line 2256 "control.y"
 { yyval.intval = 1; ;
     break;}
 case 257:
-/* #line 2258 "control.y" */
+#line 2258 "control.y"
 { yyval.intval = 0; ;
     break;}
 case 258:
-/* #line 2260 "control.y" */
+#line 2260 "control.y"
 { yyval.intval = 0; ;
     break;}
 case 259:
-/* #line 2264 "control.y" */
+#line 2264 "control.y"
 {
 	    if(yyvsp[0].vector.dimen <= 0) {
 	       msg_1s("Vector %s has dimension <= 0\n",yyvsp[0].vector.name);
@@ -4078,11 +4072,11 @@ case 259:
 	 ;
     break;}
 case 260:
-/* #line 2282 "control.y" */
+#line 2282 "control.y"
 { yyval.vector = yyvsp[0].vector; ;
     break;}
 case 261:
-/* #line 2284 "control.y" */
+#line 2284 "control.y"
 {
 	    int i,j;
 
@@ -4115,7 +4109,7 @@ case 261:
 	 ;
     break;}
 case 262:
-/* #line 2315 "control.y" */
+#line 2315 "control.y"
 {
 	    if(make_anon_vector(&yyval.vector,0,VEC_NULL) != 0) {
 	       break;
@@ -4126,7 +4120,7 @@ case 262:
 	 ;
     break;}
 case 263:
-/* #line 2326 "control.y" */
+#line 2326 "control.y"
 {
 	    char c;
 	    int i;
@@ -4155,14 +4149,14 @@ case 263:
 	 ;
     break;}
 case 264:
-/* #line 2355 "control.y" */
+#line 2355 "control.y"
 {
 	    (void)more((char *)NULL);	/* initialise more */
 	    list_internal_vars();
          ;
     break;}
 case 265:
-/* #line 2360 "control.y" */
+#line 2360 "control.y"
 {
 	    (void)more((char *)NULL);	/* initialise more */
 	    if(sm_verbose > 1) {
@@ -4175,14 +4169,14 @@ case 265:
          ;
     break;}
 case 266:
-/* #line 2371 "control.y" */
+#line 2371 "control.y"
 {
 	    (void)more((char *)NULL);	/* initialise more */
 	    (void)varlist(yyvsp[-1].charval[0],yyvsp[0].charval[0]);
 	 ;
     break;}
 case 267:
-/* #line 2376 "control.y" */
+#line 2376 "control.y"
 {
 	    char *ptr;
 	    
@@ -4194,22 +4188,22 @@ case 267:
 	 ;
     break;}
 case 268:
-/* #line 2386 "control.y" */
+#line 2386 "control.y"
 { list_edit(); ;
     break;}
 case 269:
-/* #line 2388 "control.y" */
+#line 2388 "control.y"
 {
             (void)macrolist('\0','\177');
             (void)unput('\n');
          ;
     break;}
 case 270:
-/* #line 2393 "control.y" */
+#line 2393 "control.y"
 { (void)macrolist(yyvsp[-1].charval[0],yyvsp[0].charval[0]); ;
     break;}
 case 271:
-/* #line 2395 "control.y" */
+#line 2395 "control.y"
 {
 	    if(subtable < 0) {
 	       msg("You don't have a current table\n");
@@ -4229,11 +4223,11 @@ case 271:
 	 ;
     break;}
 case 272:
-/* #line 2413 "control.y" */
+#line 2413 "control.y"
 { list_vectors(); ;
     break;}
 case 273:
-/* #line 2417 "control.y" */
+#line 2417 "control.y"
 {
 	    char *ptr;			/* pointer to $$ */
 	    int brace_level,		/* nesting of braces */
@@ -4295,7 +4289,7 @@ case 273:
 	 ;
     break;}
 case 274:
-/* #line 2478 "control.y" */
+#line 2478 "control.y"
 {
 	    char *ptr,*str;
 	    
@@ -4323,7 +4317,7 @@ case 274:
 	 ;
     break;}
 case 275:
-/* #line 2504 "control.y" */
+#line 2504 "control.y"
 {
 	    VECTOR *temp;
 		     
@@ -4335,15 +4329,15 @@ case 275:
 	 ;
     break;}
 case 276:
-/* #line 2516 "control.y" */
+#line 2516 "control.y"
 { yyval.charval[0] = '\0'; ;
     break;}
 case 277:
-/* #line 2518 "control.y" */
+#line 2518 "control.y"
 { (void)strcpy(yyval.charval,yyvsp[0].charval); ;
     break;}
 case 278:
-/* #line 2522 "control.y" */
+#line 2522 "control.y"
 {
 	    char c;
 	    int i;
@@ -4372,15 +4366,15 @@ case 278:
 	 ;
     break;}
 case 279:
-/* #line 2551 "control.y" */
+#line 2551 "control.y"
 { if(variable_name[0] != '\0') setvar(variable_name,"delete"); ;
     break;}
 case 280:
-/* #line 2553 "control.y" */
+#line 2553 "control.y"
 { if(variable_name[0] != '\0') make_local_variable(variable_name); ;
     break;}
 case 281:
-/* #line 2555 "control.y" */
+#line 2555 "control.y"
 {
 	    if(yyvsp[0].strval.start == NULL) break;
 	    *(yyvsp[0].strval.end) = '\0';		/* remove '\n' */
@@ -4389,7 +4383,7 @@ case 281:
 	 ;
     break;}
 case 282:
-/* #line 2562 "control.y" */
+#line 2562 "control.y"
 {
 	    if(variable_name[0] != '\0') {
 	       setvar(variable_name,read_image_variable(variable_name));
@@ -4397,7 +4391,7 @@ case 282:
 	 ;
     break;}
 case 283:
-/* #line 2568 "control.y" */
+#line 2568 "control.y"
 {
 	    char *temp;
 
@@ -4409,7 +4403,7 @@ case 283:
 	 ;
     break;}
 case 284:
-/* #line 2578 "control.y" */
+#line 2578 "control.y"
 {
 	    char *temp;
 
@@ -4421,11 +4415,11 @@ case 284:
 	 ;
     break;}
 case 285:
-/* #line 2588 "control.y" */
+#line 2588 "control.y"
 { if(variable_name[0] != '\0') setvar(variable_name,yyvsp[0].charval); ;
     break;}
 case 286:
-/* #line 2590 "control.y" */
+#line 2590 "control.y"
 {
 	    char *temp;
 
@@ -4441,7 +4435,7 @@ case 286:
 	 ;
     break;}
 case 287:
-/* #line 2604 "control.y" */
+#line 2604 "control.y"
 {
 	    char *oldval;		/* old value of variable */
 
@@ -4478,7 +4472,7 @@ case 287:
 	 ;
     break;}
 case 288:
-/* #line 2639 "control.y" */
+#line 2639 "control.y"
 {
 	    int i;
 	    
@@ -4492,7 +4486,7 @@ case 288:
 	 ;
     break;}
 case 289:
-/* #line 2651 "control.y" */
+#line 2651 "control.y"
 {
 	    if(variable_name[0] != '\0') {
 	       if(yyvsp[-1].vector.dimen <= 0 || yyvsp[-1].vector.type == VEC_NULL) {
@@ -4510,16 +4504,16 @@ case 289:
 	 ;
     break;}
 case 290:
-/* #line 2669 "control.y" */
+#line 2669 "control.y"
 { yyval.charval[0] = '\0'; ;
     break;}
 case 291:
-/* #line 2671 "control.y" */
+#line 2671 "control.y"
 { (void)strcpy(yyval.charval,yyvsp[0].charval); ;
     break;}
 }
    /* the action file gets copied in in place of this dollarsign */
-/* #line 303 "bison.simple" */
+#line 303 "bison.simple"
 
   yyvsp -= yylen;
   yylsp -= yylen;
@@ -4653,7 +4647,7 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-/* #line 2674 "control.y" */
+#line 2674 "control.y"
 					/* start of programmes */
 
 void

@@ -21,7 +21,9 @@ notice and this notice must be preserved on all copies.
 #define	NEW(t)		((t *) b_allocate((unsigned) sizeof(t)))
 #define	NEW2(n, t)	((t *) b_allocate((unsigned) ((n) * sizeof(t))))
 
-#define	FREE(x)		(x && free((char *) (x)))
+//#define	FREE(x)		(x && free((char *) (x)))
+// JCM: if void, cannot access value
+#define	FREE(x)		(free(x))
 
 
 extern	char *b_allocate();
